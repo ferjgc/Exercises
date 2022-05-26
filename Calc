@@ -1,0 +1,85 @@
+from enum import Enum
+import os
+
+
+class operacao(Enum):
+    adicao = 1
+    subtracao = 2
+    multiplicacao = 3
+    divisao = 4
+
+
+class Calculadora(object):
+    def adicao(self):
+        return self.valor1 + self.valor2
+
+    def subtracao(self):
+        return self.valor1 - self.valor2
+
+    def multiplicacao(self):
+        return self.valor1 * self.valor2
+
+    def divisao(self):
+        return self.valor1 / self.valor2
+
+    def calcular(self):
+        if operacao(self.operacao) == operacao.adicao:
+            return self.adicao()
+        elif operacao(self.operacao) == operacao.subtracao:
+            return self.subtracao()
+        elif operacao(self.operacao) == operacao.multiplicacao:
+            return self.multiplicacao()
+        elif operacao(self.operacao) == operacao.divisao:
+            return self.divisao()
+
+
+super_calculadora = Calculadora()
+
+# Criando o objeto calculadora:
+
+while True:
+    print(
+        "Escolha uma operação para ser calculada\n",
+        "Operações válidas:\n",
+        " 1 - Adição\n",
+        " 2 - Subtracação\n",
+        " 3 - Multiplicação\n",
+        " 4 - Divisão\n",
+        " 5 - Sair",
+    )
+    try:
+        opcao = int(input("Digite o número da operação: "))
+        if opcao == 5:
+            print("\nAté mais...\n")
+            break
+
+        if opcao >= 1 and opcao <= 4:
+            super_calculadora.operacao = opcao
+        else:
+            print("\n[ERRO] Operação Inválida! Selecione uma opção válida!")
+            input("Aperte Enter para continuar...\n")
+            continue
+    except:
+        print("\n[ERRO] Informe o NÚMERO da operação, não o seu nome")
+        input("Aperte Enter para continuar...\n")
+        continue
+
+    try:
+        super_calculadora.valor1 = float(input("Digite o valor 1: "))
+        super_calculadora.valor2 = float(input("Digite o valor 2: "))
+    except:
+        print(
+            "\n[ERRO]Informe usando apenas números, ex:\n",
+            "- Correto: 2\n",
+            "- Incorreto: Dois\n",
+        )
+        input("Aperte Enter para continuar...\n")
+        continue
+
+    resultado = super_calculadora.calcular()
+    print("O resultado é:", resultado)
+    input("\nAperte Enter para continuar...\n")
+    if os.name == 'nt':
+        os.system("cls")
+    else:
+        os.system("clear")
