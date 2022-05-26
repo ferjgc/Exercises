@@ -32,14 +32,10 @@ class Calculadora(object):
         elif operacao(self.operacao) == operacao.divisao:
             return self.divisao()
 
+# Criando o objeto calculadora:
 
 super_calculadora = Calculadora()
 
-# Limpar o output (saída) antigo após a mensagem de apertar Enter
-# Colocar cores legais (Cores para Erro, para Resultado, para Opções)
-# Estruturar o código nas boas práticas do python
-# Deixar o output ainda mais bonito (Seja Criativo <3)
-# Boas práticas: ingles (opcional)
 while True:
     print(
         "Escolha uma operação para ser calculada\n",
